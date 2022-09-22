@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polynurm Launcher", "Polynurm Launcher.csproj", "{AB516A75-4F05-4CDC-9982-D7577E6F359A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB516A75-4F05-4CDC-9982-D7577E6F359A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB516A75-4F05-4CDC-9982-D7577E6F359A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB516A75-4F05-4CDC-9982-D7577E6F359A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB516A75-4F05-4CDC-9982-D7577E6F359A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D61742A-269E-4D72-A59C-A1BEFAA03913}
+	EndGlobalSection
+EndGlobal
