@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace AgileApe_Launcher
+namespace Polynurm_Launcher
 {
     /// <summary>
     /// Interaction logic for App.xaml

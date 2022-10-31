@@ -12,6 +12,14 @@ namespace Polynurm_Launcher
 
         public MainWindow win = Application.Current.Windows[0] as MainWindow;
 
+        private double windowWidth {
+            get { return win.ActualWidth; }
+        }
+        private double windowHeight
+        {
+            get { return win.ActualHeight; }
+        }
+
         private List<Point[]> tris;
         private List<Ellipse[]> polys;
         private List<Polygon> polygons;
@@ -125,8 +133,12 @@ namespace Polynurm_Launcher
                     double _y = nowPoints[i].Y + (endPoints[i].Y - nowPoints[i].Y) * 0.001;
                     nowPoints[i] = new Point(_x, _y);
                 }
-                Canvas.SetLeft(pointObjects[i], nowPoints[i].X);
-                Canvas.SetTop(pointObjects[i], nowPoints[i].Y);
+
+                double relativePointX = nowPoints[i].X / 1280 * windowWidth;
+                double relativePointY = nowPoints[i].Y / 720 * windowHeight;
+
+                Canvas.SetLeft(pointObjects[i], relativePointX);
+                Canvas.SetTop(pointObjects[i], relativePointY);
             }
             tris = new List<Point[]>();
             foreach (Ellipse[] poly in polys)
