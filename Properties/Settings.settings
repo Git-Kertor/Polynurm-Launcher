@@ -5,14 +5,8 @@
     <Setting Name="InstallDirectory" Type="System.String" Scope="User">
       <Value Profile="(Default)">null</Value>
     </Setting>
-    <Setting Name="CloneQubeVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="TheEtherOrbVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="JokerPokerSimulatorVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="VersionControl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">null</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -11,42 +11,8 @@
     </WindowChrome.WindowChrome>
 
     <Window.Background>
-        <LinearGradientBrush>
-            <GradientStop x:Name="GradientStop1" Color="#1a76ed" Offset="0" />
-            <GradientStop x:Name="GradientStop2" Color="#49aae3" Offset="1" />
-            <GradientStop x:Name="GradientStop3" Color="#1a76ed" Offset="2" />
-            <GradientStop x:Name="GradientStop4" Color="#49aae3" Offset="3" />
-        </LinearGradientBrush>
+        <SolidColorBrush Color="#1a1a1a"/>
     </Window.Background>
-
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="Window.Loaded">
-            <BeginStoryboard>
-                <Storyboard>
-                    <DoubleAnimation
-              Storyboard.TargetName="GradientStop1"
-              Storyboard.TargetProperty="Offset"
-              From="0" To="2" Duration="0:0:12"
-              RepeatBehavior="Forever"/>
-                    <DoubleAnimation
-              Storyboard.TargetName="GradientStop2"
-              Storyboard.TargetProperty="Offset"
-              From="1" To="3" Duration="0:0:12"
-              RepeatBehavior="Forever"/>
-                    <DoubleAnimation
-              Storyboard.TargetName="GradientStop3"
-              Storyboard.TargetProperty="Offset"
-              From="-2" To="0" Duration="0:0:12"
-              RepeatBehavior="Forever"/>
-                    <DoubleAnimation
-              Storyboard.TargetName="GradientStop4"
-              Storyboard.TargetProperty="Offset"
-              From="-1" To="1" Duration="0:0:12"
-              RepeatBehavior="Forever"/>
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </Window.Triggers>
 
     <Window.Resources>
 
@@ -187,7 +153,7 @@
         </Style>
 
         <Style x:Key="functionButton" TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="#1a2b61"/>
+            <Setter Property="Background" Value="#333333"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -199,10 +165,47 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#2c4596"/>
+                    <Setter Property="Background" Value="#424242"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="IsTabStop" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ScrollBarThumbVertical" TargetType="{x:Type Thumb}">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <!--<Setter Property="Margin" Value="3"/>-->
+
+            <Setter Property="IsTabStop" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Border x:Name="rectangle" Background="#333333" Height="{TemplateBinding Height}" SnapsToDevicePixels="True" Width="{TemplateBinding Width}" CornerRadius="2"/>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="rectangle" Value="#424242"/>
+                            </Trigger>
+                            <Trigger Property="IsDragging" Value="true">
+                                <Setter Property="Background" TargetName="rectangle" Value="#3c3c3c"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Window.Resources>
 
     <Border Style="{StaticResource WindowMainPanelStyle}">
@@ -284,259 +287,125 @@
 			StrokeThickness="1" />
                 </Button>
             </Grid>
-
-
-
-
-
-
-
-            <Canvas x:Name="polyCanvas" HorizontalAlignment="Left" Width="1648" Height="753" VerticalAlignment="Top">
-                <Ellipse x:Name="point1" Canvas.Left="330" Canvas.Top="288" Fill="White"/>
-                <Ellipse x:Name="point2" Canvas.Left="500" Canvas.Top="550" Fill="White"/>
-                <Ellipse x:Name="point3" Canvas.Left="830" Canvas.Top="200" Fill="White"/>
-                <Ellipse x:Name="point4" Canvas.Left="1077" Canvas.Top="432" Fill="White"/>
-                <Ellipse x:Name="point5" Canvas.Left="853" Canvas.Top="538" Fill="White"/>
-                <Ellipse x:Name="point6" Canvas.Left="405" Canvas.Top="-424" Fill="White"/>
-                <Ellipse x:Name="point7" Canvas.Left="-56" Canvas.Top="1476" Fill="White"/>
-                <Ellipse x:Name="point8" Canvas.Left="2640" Canvas.Top="-274" Fill="White"/>
-                <Ellipse x:Name="point9" Canvas.Left="2648" Canvas.Top="560" Fill="White"/>
-                <Ellipse x:Name="point10" Canvas.Left="48" Canvas.Top="374" Fill="White"/>
-                <Ellipse x:Name="point11" Canvas.Left="1104" Canvas.Top="1600" Fill="White"/>
-                <Ellipse x:Name="point12" Canvas.Left="2516" Canvas.Top="1600" Fill="White"/>
-                <Ellipse x:Name="point13" Canvas.Left="-100" Canvas.Top="-30" Fill="White"/>
-                <Ellipse x:Name="point14" Canvas.Left="600" Canvas.Top="96" Fill="White"/>
-                <Image Source="Resources/noise_texture.jpg" Opacity="0.03" Stretch ="Fill" Height="699" Width="1204" Canvas.Left="79" Canvas.Top="33" RenderTransformOrigin="0.5,0.5">
-                    <Image.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform AngleY="0.214"/>
-                            <RotateTransform/>
-                            <TranslateTransform Y="2.246"/>
-                        </TransformGroup>
-                    </Image.RenderTransform>
-                </Image>
-            </Canvas>
-
             <Border Height="32" Background="#0d0d0d" VerticalAlignment="Top"/>
 
-            <Grid HorizontalAlignment="Left" Width="79" Background="#101214" Margin="0,32,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="72"/>
-                    <RowDefinition Height="72"/>
-                    <RowDefinition Height="72"/>
-                    <RowDefinition Height="72"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <!--Grid has stackpanel because XAML is doing trolling with the styling and it doesn't work otherwise-->
-                <Grid Grid.Row="0" Style="{StaticResource tabButtonStyle}" MouseDown="Home_Click">
 
-                    <StackPanel Background="Transparent"/>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Source="Resources/mainTab_Icon.png" Margin="18,18,0,0"/>
-                </Grid>
-                <Grid Grid.Row="1" Style="{StaticResource tabButtonStyle}" MouseDown="CloneQube_Tab_Button_Click">
-                    <StackPanel Background="Transparent"/>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="42" Margin="17,19,0,0" VerticalAlignment="Top" Width="42" Source="Resources/CloneQube Title.png"/>
-                </Grid>
-                <Grid Grid.Row="2" Style="{StaticResource tabButtonStyle}" MouseDown="The_Ether_Orb_Tab_Button_Click" RenderTransformOrigin="0.5,0.5">
-                    <Grid.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform ScaleY="-1"/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="-180"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Grid.RenderTransform>
-                    <StackPanel Background="Transparent"/>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="30" Margin="26,24,0,0" VerticalAlignment="Top" Width="30" Source="Resources/Ether Orb Title.png" RenderTransformOrigin="0.5,0.5"/>
-                </Grid>
-                <Grid Grid.Row="3" Style="{StaticResource tabButtonStyle}" MouseDown="JokerPokerSim_Tab_Button_Click">
-                    <StackPanel Background="Transparent"/>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" Height="32" Margin="23,23,0,0" VerticalAlignment="Top" Width="30" Source="Resources/JokerPokerIcon.png"/>
-                </Grid>
+
+
+
+            <Grid x:Name="sidebar" HorizontalAlignment="Left" Width="50" Background="#101214" Margin="0,32,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Content="..." MouseMove="SetToolTipPosition" Style="{StaticResource functionButton}" FontSize="20" Foreground="white" Click="SelectDirectory" Grid.Row="1" Margin="10">
+                    <Button.ToolTip>
+                        <ToolTip Foreground="White" Background="#1e1e1e" x:Name="ChooseDirectoryToolTip" Content="Choose Directory"/>
+                    </Button.ToolTip>
+
+                </Button>
+                <Button Content=">" MouseMove="SetToolTipPosition" Style="{StaticResource functionButton}" FontSize="15" Foreground="white" Click="OpenDirectory" Grid.Row="2" Margin="10">
+                    <Button.ToolTip>
+                        <ToolTip Foreground="White" Background="#1e1e1e" x:Name="OpenDirectoryToolTip" Content="Open Directory"/>
+                    </Button.ToolTip>
+                </Button>
+
             </Grid>
 
+            <ScrollViewer Margin="50,32,0,0" Background="Transparent" BorderThickness="0" ScrollViewer.CanContentScroll="False" VerticalScrollBarVisibility="Auto">
 
+                <ScrollViewer.Resources>
+                    <Style TargetType="{x:Type ScrollBar}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ScrollBar}">
+                                    <Grid x:Name="Bg" SnapsToDevicePixels="true" Width="12" Margin="-20,0,0,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}"/>
+                                            <RowDefinition Height="0.00001*"/>
+                                            <RowDefinition MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}"/>
+                                        </Grid.RowDefinitions>
+                                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.Row="1"/>
+                                        <Track x:Name="PART_Track" IsDirectionReversed="true" IsEnabled="{TemplateBinding IsMouseOver}" Grid.Row="1">
+                                            <Track.DecreaseRepeatButton>
+                                                <RepeatButton Command="{x:Static ScrollBar.PageUpCommand}" Style="{StaticResource RepeatButtonTransparent}" HorizontalAlignment="Left" Width="17"/>
+                                            </Track.DecreaseRepeatButton>
+                                            <Track.IncreaseRepeatButton>
+                                                <RepeatButton Command="{x:Static ScrollBar.PageDownCommand}" Style="{StaticResource RepeatButtonTransparent}"/>
+                                            </Track.IncreaseRepeatButton>
+                                            <Track.Thumb>
+                                                <Thumb Style="{StaticResource ScrollBarThumbVertical}" Margin="2"/>
+                                            </Track.Thumb>
+                                        </Track>
+                                    </Grid>
 
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ScrollViewer.Resources>
 
-
-
-
-
-
-
-
-            <Grid Visibility="Visible" x:Name="HomeGrid" Margin="80,32,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="2*"/>
-                </Grid.RowDefinitions>
-
-                <Viewbox Stretch="Uniform">
-                    <Grid Width="2040" Height="720">
-                        <Grid x:Name="mainPost" Grid.Row="0">
-                            <Grid.RenderTransform>
-                                <TranslateTransform/>
-                            </Grid.RenderTransform>
-                            <Image x:Name="mainPostImage"  Source="https://polynurm.fi/wp-content/uploads/2021/10/thumbnail_MSSAAC.png" Margin="0,49,779,21"/>
-
-                            <Grid.Triggers>
-                                <EventTrigger RoutedEvent="Grid.MouseEnter">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation 
-                                                Storyboard.TargetName="mainPost"
-                                                Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                                From="2" To="0" Duration="0:0:0.3" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="Grid.MouseLeave">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation 
-                                                Storyboard.TargetName="mainPost"
-                                                Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                                From="0" To="2" Duration="0:0:0.3" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                            </Grid.Triggers>
-                        </Grid>
-
-                        <Grid x:Name="mainPostTitle" Grid.Row="0">
-                            <Grid.RenderTransform>
-                                <TranslateTransform/>
-                            </Grid.RenderTransform>
-                            <Border Margin="1208,49,59,21" BorderBrush="#4fa1ff" BorderThickness="0,0,0,0" Style="{StaticResource ResourceKey=postBackground}"/>
-                            <TextBlock x:Name="mainPostTextTitle" Style="{StaticResource postText}" FontWeight="Medium" FontSize="60" Margin="1264,85,0,402" HorizontalAlignment="Left" Width="654"><Run Text="Progress Update on Monthly Salary Spent at a Casino"/><Run Text="."/></TextBlock>
-                            <TextBlock x:Name="mainPostText" Style="{StaticResource postText}" FontSize="35" Text="The game is being built off of Joker Poker Simulator. I'm working on adding a bunch of casino minigames. I currently finished adding the (slots) mechanic into the game, but I'm still a long ways from finishing it. Might take another year until it's finished." Margin="1264,323,0,72" HorizontalAlignment="Left" Width="654"/>
-                        </Grid>
-
-                    </Grid>
-                </Viewbox>
-                <Viewbox Stretch="Uniform" Grid.Row="1">
-                    <Grid Width="2000">
-                        <Grid x:Name="sidePost">
-                            <Grid.RenderTransform>
-                                <TranslateTransform/>
-                            </Grid.RenderTransform>
-
-                            <Image Source="Resources/polynurmWebsite.png" Margin="1258,29,57,29"/>
-
-
-                            <Border Style="{StaticResource ResourceKey=postBackground}" Margin="1258,43,57,41"/>
-                            <TextBlock Style="{StaticResource postText}" FontWeight="Medium" FontSize="35" Text="For the latest news and updates" Margin="1287,75,86,73"/>
-
-                            <TextBlock Style="{StaticResource postText}" FontWeight="Medium" FontSize="40" Text="Visit the official Polynurm Studios Website " Margin="1287,135,86,132">
-                                            <Hyperlink NavigateUri="https://polynurm.fi/" RequestNavigate="HyperlinkRequest">
-                                                <Hyperlink.Style>
-                                                    <Style TargetType="Hyperlink"
-                                                           BasedOn="{StaticResource {x:Type Hyperlink}}">
-                                                        <Setter Property="Foreground" Value="#34a1eb"/>
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Foreground" Value="#6abff7" />
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Hyperlink.Style>
-                                                here!</Hyperlink>
-                            </TextBlock>
-                        </Grid>
-
-                        <Grid x:Name="upcoming" Height="472">
-                            <Grid.RenderTransform>
-                                <TranslateTransform/>
-                            </Grid.RenderTransform>
-                            <Border Style="{StaticResource ResourceKey=postBackground}" BorderBrush="#4fa1ff" BorderThickness="0,0,0,0" Margin="52,44,813,42"/>
-                            <TextBlock Style="{StaticResource postText}" FontWeight="Medium" x:Name="upcomingTextTitle" FontSize="45" Margin="103,106,857,302"><Run Text="Upcoming Projects"/></TextBlock>
-                            <TextBlock Style="{StaticResource postText}" x:Name="upcomingText" Margin="103,191,841,80" FontSize="35"><Run Text="Monthly Salary Spent at a Casino - Release"/><LineBreak/><Run Text="The Ether Orb - Update 1.1"/></TextBlock>
-                        </Grid>
-                    </Grid>
-                </Viewbox>
-            </Grid>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <Grid Visibility="Hidden" x:Name="GameGrid" Margin="80,32,0,0">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="2*"/>
-                </Grid.RowDefinitions>
-
-                <Viewbox Stretch="Uniform">
-
-                    <Grid Width="2000" Grid.Row="0">
-
-                        <Grid  x:Name="animatedTab">
-                            <Grid.RenderTransform>
-                                <TranslateTransform/>
-                            </Grid.RenderTransform>
-                            <Border Height="706" x:Name="Preview" Margin="51,50,790,-50">
-                                <Border.Background>
-                                    <ImageBrush Stretch="None" ImageSource="Resources/AgileApeWindow.png"/>
-                                </Border.Background>
+                <StackPanel x:Name="ItemContainer">
+                    <Border x:Name="ItemTemplateParent" Height="80" MaxHeight="400" Margin="20,20,20,0" Visibility="Visible" CornerRadius="5">
+                        <Grid x:Name="ItemTemplateGlue">
+                            <Border x:Name="ItemTemplateContent" Height="80" Visibility="Visible" CornerRadius="5" VerticalAlignment="Top">
+                                <Border.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="Background" Value="#242423"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#282828"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Resources>
+                                <Grid Margin="20">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label x:Name="ItemTemplateLabel" Content="CloneQube" VerticalAlignment="Center" Foreground="White" FontFamily="YD Gothic" FontWeight="Normal" FontSize="28" Margin="0,-12,0,12"/>
+                                        <Label x:Name="ItemTemplateVersion" Content="Version 1.0" VerticalAlignment="Bottom" Foreground="White" FontFamily="YD Gothic" FontWeight="Normal" FontSize="12" Height="23" Margin="0,0,0,15"/>
+                                    </StackPanel>
+                                    <Label x:Name="ItemTemplateDirectory" Content="C:/Users/Admin/Polynurm Studios" VerticalAlignment="Center" Foreground="White" FontFamily="YD Gothic" FontWeight="Normal" FontSize="12" Margin="3,28,-3,-12"/>
+                                    <Button x:Name="ItemTemplatePrimaryButton" Style="{StaticResource functionButton}" Content="Play" Foreground="White" HorizontalAlignment="Right" Width="150" Margin="0,0,18,0">
+                                        <Button.Resources>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Setter Property="CornerRadius" Value="15"/>
+                                            </Style>
+                                        </Button.Resources>
+                                    </Button>
+                                    <Button x:Name="ItemTemplateSecondaryButton" Style="{StaticResource functionButton}" Content="Update" Foreground="White" HorizontalAlignment="Right" Width="150" Margin="0,0,187,0">
+                                        <Button.Resources>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Setter Property="CornerRadius" Value="15"/>
+                                            </Style>
+                                        </Button.Resources>
+                                    </Button>
+                                    <Button x:Name="ItemTemplateExpanderButton" Style="{StaticResource functionButton}" Foreground="White" HorizontalAlignment="Right" Width="20" Margin="0,-20,-20,-20">
+                                        <Button.Resources>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Setter Property="CornerRadius" Value="5"/>
+                                            </Style>
+                                        </Button.Resources>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                            <Border x:Name="ItemTemplateExpanderParent" Height="280" Margin="0,70,0,20" Opacity="0" CornerRadius="5" Background="#202020" Panel.ZIndex="-1">
+                                <Grid x:Name="ItemTemplateExpanderContainer">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image x:Name="ItemTemplateExpanderImage" Source="Resources/AgileApeWindow.png" Margin="30,35,30,25" Grid.Column="0"/>
+                                    <Label Name="ItemTemplateExpanderTextTitle" Foreground="White" FontSize="20" FontWeight="Medium" Content="Description" Grid.Column="1" Margin="24,28,308,214"/>
+                                    <TextBlock x:Name="ItemTemplateExpanderText" Style="{StaticResource postText}" FontSize="16" Grid.Column="1" Margin="30,71,30,37" TextWrapping="Wrap" Text="Stranded on a floating rectangular platform in the void. A multitude of enemies called Qubes tumble toward you in a threatening manner. With the ability to mark a tile and capture the Qubes, clear your way and beat various levels and or create your own."/>
+                                </Grid>
                             </Border>
                         </Grid>
-
-                        <Border Margin="1210,50,58,-50" Style="{StaticResource ResourceKey=postBackground}"/>
-                        <TextBlock x:Name="descriptionLabel" Style="{StaticResource postText}" HorizontalAlignment="Left" Height="501" TextWrapping="Wrap" VerticalAlignment="Top" Width="657" Background="#00000000" FontFamily="Yu Gothic" FontSize="35" Margin="1251,205,0,0"><Run Text="Stranded on a floating rectangular platform in the void. A multitude of enemies called Qubes tumble toward you in a threatening manner. With the ability to mark a tile and capture the Qubes, clear your way and beat various levels and or create your own."/><LineBreak/><Run/></TextBlock>
-                        <Label x:Name="Title" FontWeight="Medium" Content="CloneQube" HorizontalAlignment="Left" Margin="1251,99,0,0" VerticalAlignment="Top" Height="78" Width="657" Foreground="White" FontFamily="MS PGothic" FontSize="60" HorizontalContentAlignment="Left"/>
-                    </Grid>
-                </Viewbox>
-
-                <Viewbox Stretch="Uniform" Grid.Row="1">
-                    <Grid Height="474">
-                        <Grid x:Name="infoLabelBorder">
-                            <Border Margin="1216,241,58,134" CornerRadius="5" Style="{StaticResource ResourceKey=postBackground}"/>
-                            <Label x:Name="Info_Label" Foreground="White" Content="Required Space: 66 MB" HorizontalAlignment="Left" VerticalAlignment="Top" Height="54" Width="689" FontFamily="Yu Gothic UI Light" FontSize="30" Margin="1241,263,0,0"/>
-                            <Grid x:Name="loadingBalls" Visibility="Hidden">
-                                <Ellipse Fill="White" x:Name="loadingBall_1" Margin="1854,286,146,178"/>
-                                <Ellipse Fill="White" x:Name="loadingBall_2" Margin="1875,286,125,178"/>
-                                <Ellipse Fill="White" x:Name="loadingBall_3" Margin="1895,286,105,178"/>
-                                <Grid.Triggers>
-                                    <EventTrigger RoutedEvent="Grid.Loaded">
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <ThicknessAnimation Storyboard.TargetName="loadingBall_1" Storyboard.TargetProperty="Margin" From="1854,286,146,178" To="1852,284,144,176" Duration="0:0:0.5" AutoReverse="True" RepeatBehavior="Forever" BeginTime="0:0:0"/>
-                                                <ThicknessAnimation Storyboard.TargetName="loadingBall_2" Storyboard.TargetProperty="Margin" From="1875,286,125,178" To="1873,284,123,176" Duration="0:0:0.5" AutoReverse="True" RepeatBehavior="Forever" BeginTime="0:0:0.16"/>
-                                                <ThicknessAnimation Storyboard.TargetName="loadingBall_3" Storyboard.TargetProperty="Margin" From="1895,286,105,178" To="1893,284,103,176" Duration="0:0:0.5" AutoReverse="True" RepeatBehavior="Forever" BeginTime="0:0:0.32"/>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                                </Grid.Triggers>
-                            </Grid>
-                            <Button x:Name="Install_Button" Style="{StaticResource functionButton}" Content="Install" FontSize="30" FontFamily="Roboto" Foreground="White" Click="Install_Button_Click" BorderThickness="0,0,0,1" Margin="1625,366,58,34"/>
-                            <Button x:Name="Repair_Button" Style="{StaticResource functionButton}" Content="Reinstall" FontSize="30" FontFamily="Roboto" Foreground="White" Click="Repair_Button_Click" BorderThickness="0,0,0,1" Margin="1216,366,451,34"/>
-
-                        </Grid>
-
-                        <Grid Width="2010" Height="500" Margin="-4,0,4,-26">
-                            <Button Content="..." Style="{StaticResource functionButton}" FontSize="20" Foreground="white" Click="SelectDirectory" Grid.Column="0" Margin="56,380,1895,58"/>
-                            <Label Name="dirLabel"  Content="C:/Users/Sample/Folder/Polynurm Studios" Foreground="white" FontSize="23" VerticalContentAlignment="Center" Margin="123,400,1254,48"/>
-                            <Label x:Name="dirLabelDescription"  Content="Install Directory: " Foreground="white" FontSize="25" VerticalContentAlignment="Center" Margin="123,369,893,87"/>
-                        </Grid>
-                    </Grid>
-                </Viewbox>
-
-
-
-
-            </Grid>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
     </Border>
 </Window>

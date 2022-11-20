@@ -37,37 +37,13 @@ namespace Polynurm_Launcher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string CloneQubeVersion {
+        [global::System.Configuration.DefaultSettingValueAttribute("null")]
+        public string VersionControl {
             get {
-                return ((string)(this["CloneQubeVersion"]));
+                return ((string)(this["VersionControl"]));
             }
             set {
-                this["CloneQubeVersion"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string TheEtherOrbVersion {
-            get {
-                return ((string)(this["TheEtherOrbVersion"]));
-            }
-            set {
-                this["TheEtherOrbVersion"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string JokerPokerSimulatorVersion {
-            get {
-                return ((string)(this["JokerPokerSimulatorVersion"]));
-            }
-            set {
-                this["JokerPokerSimulatorVersion"] = value;
+                this["VersionControl"] = value;
             }
         }
     }
