@@ -349,7 +349,7 @@
                 </ScrollViewer.Resources>
 
                 <StackPanel x:Name="ItemContainer">
-                    <Border x:Name="ItemTemplateParent" Height="80" MaxHeight="400" Margin="20,20,20,0" Visibility="Visible" CornerRadius="5">
+                    <Border x:Name="ItemTemplateParent" Height="80" MaxHeight="400" Margin="20,20,20,20" Visibility="Visible" CornerRadius="5">
                         <Grid x:Name="ItemTemplateGlue">
                             <Border x:Name="ItemTemplateContent" Height="80" Visibility="Visible" CornerRadius="5" VerticalAlignment="Top">
                                 <Border.Resources>
@@ -385,7 +385,7 @@
                                     <Button x:Name="ItemTemplateExpanderButton" Style="{StaticResource functionButton}" Foreground="White" HorizontalAlignment="Right" Width="20" Margin="0,-20,-20,-20">
                                         <Button.Resources>
                                             <Style TargetType="{x:Type Border}">
-                                                <Setter Property="CornerRadius" Value="5"/>
+                                                <Setter Property="CornerRadius" Value="2,5,5,2"/>
                                             </Style>
                                         </Button.Resources>
                                     </Button>

@@ -120,6 +120,11 @@ namespace Polynurm_Launcher
                 TextBlock ItemButtonExpanderText = (TextBlock)Item.FindName("ItemTemplateExpanderText");
                 Border ItemTemplateExpanderParent = (Border)Item.FindName("ItemTemplateExpanderParent");
 
+                if(i != 0)
+                {
+                    Item.Margin = new Thickness(20,0,20,20);
+                }
+
                 ItemLabel.Content = row[0];
                 ItemVersion.Content = "Version 1.0";
                 ItemDirectory.Content = polynurmFolder;
